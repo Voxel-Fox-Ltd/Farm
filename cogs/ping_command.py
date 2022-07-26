@@ -1,20 +1,48 @@
 from discord.ext import commands, vbu
 
 
-class PingCommand(vbu.Cog):
+class FarmyardCommands(vbu.Cog):
+    """
+    Commands that handle a user's properties.
+    """
 
-    @commands.command()
-    async def ping(self, ctx: vbu.Context):
+    @commands.group(
+        application_command_meta=commands.ApplicationCommandMeta(),
+    )
+    async def farmyard(self, _: commands.SlashContext):
+        ...
+
+    @farmyard.command(
+        name="create",
+        application_command_meta=commands.ApplicationCommandMeta(),
+    )
+    async def farmyard_create(self, ctx: commands.SlashContext):
         """
-        An example ping command.
         """
 
-        if isinstance(ctx, vbu.SlashContext):
-            await ctx.interaction.response.send_message("Pong!")
-        else:
-            await ctx.send("Pong!")
+        ...
+
+    @farmyard.command(
+        name="clear",
+        application_command_meta=commands.ApplicationCommandMeta(),
+    )
+    async def farmyard_clear(self, ctx: commands.SlashContext):
+        """
+        """
+
+        ...
+
+    @farmyard.command(
+        name="list",
+        application_command_meta=commands.ApplicationCommandMeta(),
+    )
+    async def farmyard_list(self, ctx: commands.SlashContext):
+        """
+        """
+
+        ...
 
 
 def setup(bot: vbu.Bot):
-    x = PingCommand(bot)
+    x = FarmyardCommands(bot)
     bot.add_cog(x)
